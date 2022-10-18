@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myshop/ui/cart/cart_manager.dart';
+import 'package:myshop/ui/order/order_manager.dart';
 import 'ui/products/product_detail_screen.dart';
 import 'ui/products/product_manager.dart';
 import 'ui/products/product_overview_screen.dart';
@@ -7,6 +8,7 @@ import 'ui/products/user_products_screen.dart';
 import 'ui/cart/cart_screen.dart';
 import 'ui/order/order_screen.dart';
 import 'package:provider/provider.dart';
+import 'ui/screen.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -16,14 +18,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider (
+    return MultiProvider(
       providers: [
         ChangeNotifierProvider(
           create: (ctx) => ProductManager(),
         ),
         ChangeNotifierProvider(
           create: (ctx) => CartManager(),
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => OrdersManager(),
+        ),
       ],
       child: MaterialApp(
 
@@ -40,7 +45,7 @@ class MyApp extends StatelessWidget {
      home: const ProductsOverviewScreen(),
       routes: {
         CartScreen.routeName: (ctx) => const CartScreen(),
-        OrdersScreen.routeName: (ctx) => const OrdersScreen(),
+        OrderScreen.routeName: (ctx) => const OrderScreen(),
         UserProductsScreen.routeName: (ctx) => const UserProductsScreen(),
       },
       onGenerateRoute: (settings) {
