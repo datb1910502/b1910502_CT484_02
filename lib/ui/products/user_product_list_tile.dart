@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myshop/ui/products/product_manager.dart';
 import '../../models/product.dart';
 import 'package:provider/provider.dart';
+
 class UserProductListTile extends StatelessWidget {
   final Product product;
 
@@ -29,8 +30,8 @@ class UserProductListTile extends StatelessWidget {
     );
   }
 
-  Widget buildEditButton(BuildContext context) {
-  return IconButton(
+  Widget buildDeleteButton(BuildContext context) {
+    return IconButton(
       icon: const Icon(Icons.delete),
       onPressed: () {
         context.read<ProductManager>().deleteProduct(product.id!);
@@ -48,15 +49,14 @@ class UserProductListTile extends StatelessWidget {
       color: Theme.of(context).errorColor,
     );
   }
-  
 
-  Widget buildDeleteButton(BuildContext context) {
+  Widget buildEditButton(BuildContext context) {
     return IconButton(
-      icon: const Icon(Icons.delete),
-      onPressed: () async {
-        print('Delete a product');
+      icon: const Icon(Icons.edit),
+      onPressed: () {
+        print('Go to edit product screen');
       },
-      color:  Theme.of(context).errorColor,
+      color: Theme.of(context).primaryColor,
     );
   }
 }
