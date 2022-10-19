@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'order_manager.dart';
-import 'order_item_card.dart';
+import 'package:myshop/ui/order/order_manager.dart';
+import 'package:myshop/ui/order/order_item_card.dart';
 import '../shared/app_drawer.dart';
 
-class OrderScreen extends StatelessWidget {
+class OrdersScreen extends StatelessWidget {
   static const routeName = '/orders';
-  const OrderScreen({super.key});
+  const OrdersScreen({super.key});
   @override
   Widget build(BuildContext context) {
     print('building orders');

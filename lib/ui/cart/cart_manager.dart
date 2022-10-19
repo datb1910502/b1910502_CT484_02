@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-
+import 'package:myshop/models/product.dart';
 import '../../models/cart_item.dart';
 import '../../models/product.dart';
 import '../../models/cart_item.dart';

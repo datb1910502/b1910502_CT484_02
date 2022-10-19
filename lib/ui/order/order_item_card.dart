@@ -17,6 +17,7 @@ class OrderItemCard extends StatefulWidget {
 
 class _OrderItemCardState extends State<OrderItemCard> {
   var _expanded = false;
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -65,12 +66,12 @@ class _OrderItemCardState extends State<OrderItemCard> {
   Widget buildOrderSummary() {
     return ListTile(
       title: Text('\$${widget.order.amount}'),
-      subtitle: Text(
-        DateFormat('dd/MM/yyyy:mm').format(widget.order.dateTime),
+      subtitle: Text(  
+        DateFormat('dd/MM/yyyy hh:mm').format(widget.order.dateTime),
       ),
-      trailing: IconButton(
+      trailing: IconButton(   
         icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),
-        onPressed: () {
+        onPressed: (){
           setState(() {
             _expanded = !_expanded;
           });
