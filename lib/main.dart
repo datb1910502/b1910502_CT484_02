@@ -32,9 +32,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => AuthManager(),
           ),
-        ChangeNotifierProvider(
-          create: (ctx) => ProductManager(),
-        ),
+       ChangeNotifierProxyProvider<AuthManager, ProductsManager>(
+            create: (ctx) => ProductsManager(),
+            update: (ctx, authManager, productsManager) {
+              productsManager!.authToken = authManager.authToken;
+              return productsManager;
+            },
+          ),
         ChangeNotifierProvider(
           create: (ctx) => CartManager(),
         ),
@@ -79,7 +83,7 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(
                 builder: (ctx) {
                   return ProductDetailScreen(
-                    ctx.read<ProductManager>().findById(productId),
+                    ctx.read<ProductsManager>().findById(productId),
                   );
                 },
               );
@@ -90,7 +94,7 @@ class MyApp extends StatelessWidget {
                   builder: (ctx) {
                     return EditProductScreen(
                       productId != null ?
-                      ctx.read<ProductManager>().findById(productId):null,
+                      ctx.read<ProductsManager>().findById(productId):null,
                     );
                   },
                 );
