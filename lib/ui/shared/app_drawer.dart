@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import '../order/order_screen.dart';
-
+import 'package:provider/provider.dart';
+import '../products/user_products_screen.dart';
+import '../auth/auth_manager.dart';
+import '../order/order_screen.dart';
 import '../products/user_products_screen.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -39,6 +42,17 @@ class AppDrawer extends StatelessWidget {
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(UserProductsScreen.routeName);
+            },
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.exit_to_app),
+            title: const Text('Logout'),
+            onTap: () {
+              Navigator.of(context)
+              ..pop()
+              ..pushReplacementNamed('/');
+      context.read<AuthManager>().logout();
             },
           ),
         ],
